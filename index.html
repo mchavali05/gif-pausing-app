@@ -4,12 +4,44 @@
 	<title>gif</title>
 </head>
 <body>
-	<div>
+	<div class="button-container">
 		
 	</div>
-	
-	<script type="text/javascript">
+
+	<form class="add-button-form">
+		<label for="">Add topics <br></label>
+		<input type="text" id="button-text">
+		<button type="submit" name="Button">Add topic button</button>
+	</form>
+
+	<div class="movie-container">
 		
+	</div>
+
+	<div id="animals">
+		
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<script type="text/javascript">
+	  // https://api.giphy.com/v1/gifs/search?api_key=tmSO46SBQvgrMyGcPly3Zrc7k7zk8zFZ&q=omg&limit=25&offset=0&lang=en
+	  var topics = [];
+	  $('button').on('click', function() {
+		  var animals = $(this).data('name');
+		  var queryURL = 'https://api.giphy.com/v1/gifs/search?q=' + animal + '&api_key=tmSO46SBQvgrMyGcPly3Zrc7k7zk8zFZ&limit=10';
+		  $.ajax({
+	        method: 'GET',
+	        url: queryURL
+	      }).then(function(response){
+	        console.log(response);
+	        var results = response.data;
+	      })
+
+      });
+
+
+
 	</script>
 </body>
 </html>
