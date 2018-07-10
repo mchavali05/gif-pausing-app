@@ -27,7 +27,7 @@
     $(document).on('click', '.my-buttons', function(){
     	var animalName = $(this).attr('info');
     	//empty the images div
-    	$('#gifs').empty();
+    	//$('#gifs').empty();
     	console.log(animalName);
     	$.get('https://api.giphy.com/v1/gifs/search?api_key=tmSO46SBQvgrMyGcPly3Zrc7k7zk8zFZ&q=' + animalName + '&limit=10', function(response){
     		var results = response.data
