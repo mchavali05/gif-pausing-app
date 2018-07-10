@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>gif</title>
+	<title>giphy</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
@@ -15,78 +16,12 @@
 		<label for="">Add an animal<br></label>
 		<input type="text" id="button-text">
 		<button type="submit" class = "btn btn-primary" name="Button">Submit</button>
+		<br>
 	</form>
-
-
-	<div class="animals-container">
-		<div class="giphy-img">
-			
-		</div>
-	</div>
 
 	<div id="gifs" style="float:left"></div>
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="assets/js/giphy.js"></script>
 
-	<script type="text/javascript">
-	  // https://api.giphy.com/v1/gifs/search?api_key=tmSO46SBQvgrMyGcPly3Zrc7k7zk8zFZ&q=omg&limit=25&offset=0&lang=en
-
-	  //array of topics
-	  var topics = ["cat", "dog", "elephant", "horse", "deer"];
-
-	  //make buttons from array
-	  function displayButtons(){
-        $('.button-container').empty()
-        for (var i = 0; i < topics.length; i++) {
-          var newButton = $('<button>');
-          newButton.text(topics[i]);
-          newButton.addClass('my-buttons');
-          newButton.attr('info', topics[i]);
-          $('.button-container').append(newButton);
-        }
-      }
-
-      displayButtons()
-
-      // Add a button
-      $('.add-button-form').on('submit', function(event){
-      	event.preventDefault();
-      	var newAnimal = $('#button-text').val();
-      	topics.push(newAnimal);
-      	displayButtons();
-      })
-
-      $(document).on('click', '.my-buttons', function(){
-      	var animalName = $(this).attr('info');
-      	console.log(animalName);
-      	$.get('https://api.giphy.com/v1/gifs/search?api_key=tmSO46SBQvgrMyGcPly3Zrc7k7zk8zFZ&q=' + topics + '&limit=10', function(response){
-      		console.log(response);
-      		var results = response.data
-      		console.log(results);
-
-      		for(var i=0; i < results.length; i++) {
- 				//$('.animals-container').empty();
- 				var animalAddDiv = $('<div/>');
- 				var p = $('<p/>');
- 				p.text(results[i].rating);
- 				var newImg = $('<img/>');
- 				newImg.addClass('my-imgs');
- 				newImg.attr('src', results[i].images.fixed_height.url);
- 				newImg.attr('data-still', results[i].images.fixed_height_still.url);
- 				newImg.attr('data-animate', results[i].images.fixed_height.url);
- 				animalAddDiv.append(newImg);
- 				animalAddDiv.append(p);
- 				animalAddDiv.prepend($('#gifs'));
-
-      		}
-
-      	})
-      });
-
-      	// <img src="https://media3.giphy.com/media/W6LbnBigDe4ZG/200_s.gif" data-still="https://media3.giphy.com/media/W6LbnBigDe4ZG/200_s.gif" data-animate="https://media3.giphy.com/media/W6LbnBigDe4ZG/200.gif" data-state="still" class="gif">
-
-
-
-	</script>
 </body>
 </html>
