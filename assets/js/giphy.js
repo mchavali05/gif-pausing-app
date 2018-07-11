@@ -27,7 +27,7 @@
     $(document).on('click', '.my-buttons', function(){
     	var animalName = $(this).attr('info');
     	//empty the images div
-    	//$('#gifs').empty();
+    	$('#gifs').empty();
     	console.log(animalName);
     	$.get('https://api.giphy.com/v1/gifs/search?api_key=tmSO46SBQvgrMyGcPly3Zrc7k7zk8zFZ&q=' + animalName + '&limit=10', function(response){
     		var results = response.data
@@ -36,7 +36,8 @@
     		for(var i=0; i < results.length; i++) {
    				var animalAddDiv = $('<div>');
    				var p = $('<p class="rating">');
-   				p.text(results[i].rating);
+   				p.text("Rating: " + results[i].rating);
+          //p.text("Rating");
    				var newImg = $('<img>');
    				newImg.addClass('my-imgs');
    				newImg.attr('src', results[i].images.fixed_height_still.url);

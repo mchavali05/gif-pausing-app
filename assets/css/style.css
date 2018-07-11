@@ -22,7 +22,7 @@ button {
 #gifs {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-	grid-gap: 20px;
+	grid-gap: 35px;
 	margin-top: 15px;
 }
 
